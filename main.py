@@ -1,57 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="wclassth=device-wclassth, initial-scale=1.0">
-	<title>Music Player</title>
-	<script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.10.6/brython.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.10.6/brython_stdlib.min.js"></script>
-	<link rel="stylesheet" href="./styles.css">
-	<link href='https://fonts.googleapis.com/css?family=Sora' rel='stylesheet'>
-</head>
-<body onload="brython()">
-	<div class="main">
-		<div class="app">
-			<div class="top-bar">
-				<button class="button"><iconify-icon icon="material-symbols:arrow-back-rounded"></iconify-icon></button>
-				<h4>PLAYING NOW</h4>
-				<button class="button"><iconify-icon icon="heroicons:bars-3-solid"></iconify-icon></button>
-			</div>
-			<div class="music-bar">
-				<div class="music-picture">
-					<img src="" alt="" id="music_jpg">
-				</div>
-			</div>
-			<div class="label">
-				<div class="artist">
-					<h3 id="team"></h3>
-					<h5 id="artist_name"></h5>
-				</div>
-			</div>
-			<div class="track">
-				<input type="range" id="seekbar" min="0" max="100" value="">
-				<audio id="aud" src=""></audio>
-			</div>
-			<div class="controls">
-				<div class="heart">
-					<button class="button"><iconify-icon icon="heroicons:heart-solid"></iconify-icon></button>
-				</div>
-				<div class="prev">
-					<button class="button" id="prev"><iconify-icon icon="ci:skip-previous"></iconify-icon></button>
-				</div>
-				<div class="play">
-					<button class="button" id="play"><iconify-icon icon="ci:play-arrow"></iconify-icon></button>
-					<button class="button hidden" id="pause"><iconify-icon icon="akar-icons:pause"></iconify-icon></button>
-				</div>
-				<div class="next">
-					<button class="button" id="next"><iconify-icon icon="ci:skip-next"></iconify-icon></button>
-				</div>
-			</div>
-		</div>
-	</div>
-</body>
-<script type="text/python" >
 	from browser import document,bind
 	from browser.template import Template
 	play=document["play"]
@@ -132,21 +78,18 @@
 	length=len(music_list)
 
 	def playit(e):
-		global music,play,pause,song,img
+		global music,play,pause,song
 		music.play()
 		play.classList.add("hidden")
 		pause.classList.remove("hidden")
-		img.classList.add("rotating")
-		img.classList.remove("start")
+		
 
 	def pauseit(e):
-		global img,music,play,pause,song
+		global music,play,pause,song
 		music.pause()
 		
 		pause.classList.add("hidden")
 		play.classList.remove("hidden")
-		img.classList.remove("rotating")
-		img.clasList.add("start")
 	
 	def nextone(e):
 		global index,length
@@ -190,6 +133,3 @@
 	music.bind("timeupdate",mainfunc)
 	prev.bind('click', prevone)
 	next.bind('click', nextone)
-
-</script>
-</html>

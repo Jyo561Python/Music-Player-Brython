@@ -53,11 +53,25 @@ box-shadow:  28px 28px 56px #c8c8c8,
 
 }
 .music-picture img{
+  object-fit: cover;
+  position: absolute !important;
 	border-radius: 140px;
 	width: 180px;
 	height: 180px;
-
+  animation: rotate 3s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite ;
+  animation-play-state: paused ;
 }
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .label{
 	justify-content: center;
 	align-items: center;
@@ -192,4 +206,13 @@ input[type=range]:focus::-ms-fill-upper {
 }
 .hidden{
 	display: none;
+}
+.rotating{
+  animation-play-state: running !important;
+}
+.unrotating{
+  animation-play-state: paused !important;
+}
+.start{
+  transform: rotate(0deg) !important;
 }
